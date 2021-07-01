@@ -26,7 +26,7 @@ namespace FFImageLoading.Work
     public class PlatformImageLoaderTask<TImageView> : ImageLoaderTask<PImage, PImage, TImageView> where TImageView : class
     {
 #pragma warning disable RECS0108 // Warns about static fields in generic types
-        private static readonly IDecoder<PImage> _webpDecoder = new WebPDecoder();
+        //private static readonly IDecoder<PImage> _webpDecoder = new WebPDecoder();
 #pragma warning restore RECS0108 // Warns about static fields in generic types
 
         public PlatformImageLoaderTask(ITarget<PImage, TImageView> target, TaskParameter parameters, IImageService imageService) : base(ImageCache.Instance, target, parameters, imageService)
@@ -63,8 +63,8 @@ namespace FFImageLoading.Work
                 case ImageInformation.ImageType.GIF:
                     return new GifDecoder();
 
-                case ImageInformation.ImageType.WEBP:
-                    return _webpDecoder;
+                //case ImageInformation.ImageType.WEBP:
+                //    return _webpDecoder;
 
                 default:
                     return new BaseDecoder();

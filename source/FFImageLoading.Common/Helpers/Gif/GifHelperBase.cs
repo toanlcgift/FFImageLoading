@@ -183,10 +183,10 @@ namespace FFImageLoading.Helpers.Gif
 
 		public void Clear()
 		{
-			if (_previousImage != default)
-			{
-				Release(_previousImage);
-			}
+			//if (_previousImage != default)
+			//{
+			//	Release(_previousImage);
+			//}
 
 			_header = null;
 			_mainPixels = null;
@@ -241,10 +241,10 @@ namespace FFImageLoading.Helpers.Gif
 			// clear all pixels when meet first frame and drop prev image from last loop
 			if (previousFrame == null)
 			{
-				if (_previousImage != default)
-				{
-					Release(_previousImage);
-				}
+				//if (_previousImage != default)
+				//{
+				//	Release(_previousImage);
+				//}
 				_previousImage = default;
 				dest.Fill(COLOR_TRANSPARENT_BLACK);
 			}
@@ -253,7 +253,7 @@ namespace FFImageLoading.Helpers.Gif
 			// When DISPOSAL_PREVIOUS and previousImage didn't be set, new frame should draw on
 			// a empty image
 			if (previousFrame != null && previousFrame.Dispose == GifFrame.Disposal.PREVIOUS
-					&& _previousImage == default)
+					/*&& _previousImage == default*/)
 			{
 				dest.Fill(COLOR_TRANSPARENT_BLACK);
 			}
@@ -291,7 +291,7 @@ namespace FFImageLoading.Helpers.Gif
 						}
 					}
 				}
-				else if (previousFrame.Dispose == GifFrame.Disposal.PREVIOUS && _previousImage != default)
+				else if (previousFrame.Dispose == GifFrame.Disposal.PREVIOUS /*&& _previousImage != default*/)
 				{
 					// Start with the previous frame
 					GetPixels(_previousImage, dest, DownsampledWidth, DownsampledHeight);
@@ -314,10 +314,10 @@ namespace FFImageLoading.Helpers.Gif
 			if (_savePrevious && (currentFrame.Dispose == GifFrame.Disposal.UNSPECIFIED
 				|| currentFrame.Dispose == GifFrame.Disposal.NONE))
 			{
-				if (_previousImage == default)
-				{
-					_previousImage = GetNextBitmap();
-				}
+				//if (_previousImage == default)
+				//{
+				//	_previousImage = GetNextBitmap();
+				//}
 				SetPixels(_previousImage, dest, DownsampledWidth, DownsampledHeight);
 			}
 
